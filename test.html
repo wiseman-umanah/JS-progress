@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Introduction</title>
+    <script src="jquery.js"></script>
+</head>
+<body>
+
+<p id="demo">This is a paragraph.</p>
+
+<button type="button" class="change-text">Change Text</button>
+<button class="toggle-mode">Dark Mode</button>
+<form class="submit">
+	<input placeholder="NAME" type="text" class="name-input">
+	<button type="submit">Submit</button>
+</form>
+<script>
+$(document).ready(function(){
+  $(".change-text").hover( () => {
+		$("#demo").text("Hello, My Love! Welcome to jQuery Animations.");
+	}, () => {
+    	$("#demo").text("This is a paragraph")
+	}
+  )
+	$('.toggle-mode').click( () => {
+		if ($('.toggle-mode').hasClass('dark')) {
+			$('body').css('background-color', 'black')
+			$('body').css('color', 'white')
+			$('.toggle-mode').removeClass('dark')
+		}
+		else {
+			$('body').css('background-color', 'white')
+			$('body').css('color', 'black')
+			$('.toggle-mode').addClass('dark')
+		}
+	})
+	// Corrected and improved jQuery script
+	$('.submit').submit(function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    //$('p').toggle(1000)
+	$('p').slideUp(1000)
+	$('p').slideDown(1000)
+	$('.toggle-mode').animate({height: '200px'}, 1000, "swing", () => {alert("hello world")})
+});
+
+});
+</script>
+
+</body>
+</html>
+
